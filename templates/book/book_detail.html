@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<head>
+
+    <title>{{ book.title }}</title>
+</head>
+
+{% block content %}
+<body>
+
+
+    <h2>{{ book.title }}</h2><br>
+    <img src="{{ book.image.url }}" height="300px"><br>
+    <h4>Description: {{ book.description }}</h4>
+    <h4>Page: {{ book.page }}</h4>
+    <h4>Price: {{ book.price }}</h4>
+    <button><a href="{% url 'products:book-delete' book.pk %}"> Delete </a></button>
+
+
+<h2> Reviews </h2>
+
+<button><a href="{% url 'products:add-review' book.pk %}"> Add Review </a></button>
+
+{% for review in reviews %}
+    <p>{{ review.user.username }} | {{ review.star_given }}- star <br>
+    {{ review.comment }} <hr>
+{% endfor %}
+
+
+
+</body>
+
+{% endblock content %}
+

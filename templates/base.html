@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+
+<div class="success-message">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    <h4 class="alert-success text-center" style="padding-top: 5px">
+                        {{ message }}
+                    </h4>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+        <button><a href="{% url 'products:book-list' %}"> Books </a></button>   /
+        <button><a href="{% url 'users:register' %}"> Register </a></button>   /
+        <button><a href="{% url 'test' %}"> Test </a></button>   /
+
+            {% if request.user.is_authenticated %}
+                <button><a href="{% url 'users:logout' %}"> Logout </a></button>
+            {% else %}
+                 <button><a href="{% url 'users:login' %}"> Login </a></button>
+            {% endif %}
+
+        {% block content %}
+
+        {% endblock content %}
+</body>
+</html>

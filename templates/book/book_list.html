@@ -1,0 +1,23 @@
+<head>
+    <title>Books</title>
+</head>
+<body>
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <h1> Books Page </h1><hr>
+
+        <button><a href="{% url 'products:create-book' %}"> Add Book </a></button> <br><hr>
+
+
+        {% for b in book %}
+            <a href="{% url 'products:book-detail' b.pk %}">{{ b.title }}</a> <br><br>
+        {% endfor %}
+
+    {% endblock content %}
+
+</body>
+
+

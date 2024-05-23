@@ -1,0 +1,15 @@
+    {% extends 'base.html' %}
+
+
+    {% block content %}
+    <form method="post">{% csrf_token %}
+
+        <p> Are you sure you want to delete</p>
+
+        <input type="submit" value="Yes">
+
+    </form>
+
+    <button><a href="{% url 'products:book-detail' object.pk %} "> No </a></button>
+
+    {% endblock content %}
